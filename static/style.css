@@ -1,0 +1,61 @@
+body {
+          margin: 1em;
+          padding: 1em;
+          font-family:verdana;;
+          color: #F5C0B4;
+        }
+
+.grid{
+display: grid;
+grid-gap:1em;
+grid-template-columns: 1fr 1fr 1fr;
+
+
+grid-template-areas:
+"title title title"
+"navigation navigation navigation"
+"content content content";
+}
+
+
+.title{
+
+grid-area: title;
+}
+
+.navigation{
+grid-area: navigation;
+}
+
+
+.content{
+grid-area: content;
+}
+
+
+
+
+
+
+.button {
+ font-family: verdana;
+  background-color: #ffff99;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: #eee;
+  color: black;
+  border: 1px solid black;
+ 
+}
+
+.button1:hover            { background-color: #F5C0B4;}
