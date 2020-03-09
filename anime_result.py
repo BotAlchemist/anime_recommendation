@@ -79,20 +79,20 @@ def get_suggestions(query_anime):
     def get_result(test):
         anime_result_list=[]
         for row in test.iterrows():
-            print('Similar anime like {}:'.format(row[1]['title']))
+            #print('Similar anime like {}:'.format(row[1]['title']))
             anime_result_list.append(row[1]['title'])
             search = anime_test.drop([row[0]]) # drop current anime
             search['result'] = search['features'].apply(lambda x: cosine_similarity([row[1]['features']], [x]))
             search_result = search.sort_values('result', ascending=False)['title'].head(10)
             for res in search_result.values:
-                print('\t{}'.format(res))
+                #print('\t{}'.format(res))
                 anime_result_list.append(res)
-            print()
+            #print()
         return(anime_result_list)
     anime_names= anime_test['title'].unique()
     test= anime_test[anime_test['title']== query_anime]
 
-    print(query_anime)
+    #print(query_anime)
     if len(test) != 0:
         anime_recommendation_list=get_result(test)
         anime_result_final= anime_df.ix[anime_recommendation_list]
@@ -103,17 +103,18 @@ def get_suggestions(query_anime):
         anime_result_final= anime_result_final.values.tolist()
         #print(anime_result_final)
         
-        return (anime_result_final, flag)
+        return (anime_result_final, flag, query_anime)
     else:
         anime_close_match_list = []
         close_match = find_close_match(query_anime)
         for i in close_match['Anime'].values:
-            print(i)
+            #print(i)
             anime_close_match_list.append(i)
         flag = 1
         anime_close_match = pd.DataFrame(anime_close_match_list, columns=['title'])
+        anime_close_match= anime_close_match.values.tolist()
         #print(anime_close_match_list)
-        return(anime_close_match, flag)
+        return(anime_close_match, flag, query_anime)
 
 
 
@@ -127,53 +128,7 @@ def get_suggestions(query_anime):
 
 
     
-    
-##   
-##    otd_test= pd.read_csv(otd_data_path,  header = 0 )
-##    otd_test['stage dest point'].fillna(otd_test['ship to'], inplace=True)
-##    otd_original = otd_test.copy()
-##    otd_test= otd_test.dropna()
-##    #otd_test.otd.replace(['E', 'L'], [0, 1], inplace=True)
-##    otd_test = otd_test.drop(['delivery', 'transport', 'item', 'date'], axis=1)
-##   
-##   
-##    def label_encode_column(df, column):
-##        dictionary_path = cwd + '\\files\\' + column + '.dict'
-##    #unique_column = df[column].unique()
-##        #dict_column= dict(list(enumerate(unique_column)))
-##       
-##        #dict_column ={v: k for k, v in dict_column.items()}
-##        with open(dictionary_path, 'rb') as handle:
-##            dict_column = pickle.load(handle)
-##        df[column] = df[column].map(dict_column)
-##        df[column] = df[column].astype('float')
-##        return df[column]
-##   
-##    print(otd_test.head())
-##    otd_test['transport plan point'] = label_encode_column(otd_test, 'transport plan point')
-##    otd_test['frieght type'] = label_encode_column(otd_test, 'frieght type')
-##    otd_test['shipping point'] = label_encode_column(otd_test, 'shipping point')
-##    otd_test['ship to'] = label_encode_column(otd_test, 'ship to')
-##    otd_test['stage dest point'] = label_encode_column(otd_test, 'stage dest point')
-##    otd_test['stage depart point'] = label_encode_column(otd_test, 'stage depart point')
-##   
-##    if otd_test.isnull().values.any() == True:
-##        otd_test=otd_test.dropna()
-##    else:
-##        pass
-##   
-##   
-##    with open(model_path, 'rb') as f:
-##        rf_model = pickle.load(f)
-##    y_pred = rf_model.predict(otd_test)
-##    y_pred= pd.DataFrame(y_pred, columns=['prediction'])
-##   
-##    otd_result= pd.concat([otd_original, y_pred], axis=1)
-##    otd_result = otd_result.dropna()
-##    #otd_result = otd_result.drop(['otd'], axis=1)
-##    otd_result.prediction.replace([0,1], ['Early', 'Late'], inplace=True)
-##    otd_result.to_csv(result_path, index=False)
-##    return otd_result
+
 
            
     
