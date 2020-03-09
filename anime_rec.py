@@ -20,22 +20,25 @@ def result():
 
         
         if request.form['submit_button'] == 'get_recommendation':
-            result, flag = get_suggestions(anime_query)
+            result, flag, query_anime = get_suggestions(anime_query)
             if flag ==0:
                 result= np.array(result)
                 query_anime= result[0].tolist()
                 suggestion_anime= result[1:, :].tolist()
-                print(suggestion_anime[0])
+                #print(suggestion_anime[0])
            
                 #return render_template('result.html', tables=[result.to_html(classes = 'my_class" id = "my_id',header="true", index=False)], flag= flag)
                 return render_template('result.html', query_anime= query_anime,suggestion_anime=suggestion_anime, flag= flag)
             elif flag == 1:
-                print(result)
-                return render_template('result.html', tables=[result.to_html(classes = 'my_class" id = "my_id',header="true", index=False)], flag= flag)
-                #return render_template('result.html', tables=result, flag= flag)
+                #print(result)
+                #return render_template('result.html', tables=[result.to_html(classes = 'my_class" id = "my_id',header="true", index=False)], flag= flag)
+                return render_template('result.html', tables=result, flag= flag, query_anime= query_anime)
        
        
-        
+@app.route('/about')
+def about():
+
+    return render_template('about.html') 
            
        
        
