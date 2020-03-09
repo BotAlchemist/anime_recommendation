@@ -59,3 +59,22 @@ grid-area: content;
 }
 
 .button1:hover            { background-color: #F5C0B4;}
+
+/* unvisited link */
+a:link {
+  color: #F5C0B4;
+}
+
+/* visited link */
+a:visited {
+  color: #F5C0B4;
+}
+
+
+
+input[type=text] {
+  width: 75%;
+  padding: 2px 2px;
+  background-color: #F5C0B4;
+  color: #473936;
+}
