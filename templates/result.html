@@ -4,14 +4,7 @@
 <title> Anime Recommendation App </title>
 
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
-<img src="https://cdn.myanimelist.net/images/anime/2/23085.jpg" alt="W3Schools.com">
--->
+
 
 
 </head>
@@ -21,7 +14,7 @@
     <div style="background-image: url(../static/anime_wall_2.jpg); height: 150px; width: 100%; border: 1px solid black;" class= "title">
 		
         <h1><center><font size="15" color="#543A35"> Anime Recommendation </font></center></h1>
-		<center><b><font size="4" color="#543A35"> Created by: Sumit Srivastava </b></font></center>
+		<center><b><font size="4" color="#543A35"> Created by: Sumit Srivastava</font></b></center>
 		
     </div>
    
@@ -29,16 +22,19 @@
         <center>
         <form action="{{ url_for('result')}}"method="post">
 			<center>
-			<input type = "text" name = "text" placeholder = "Enter Anime"  required= "required" style="width: 300px;">
+			<input type = "text" name = "text" placeholder = "Enter Anime  (Case sensitive)"  required= "required" style="width: 300px;">
 			<button class="button button1" type= "submit" name="submit_button" value="get_recommendation"> Get Recommendation </button>
-			<!--<a href="{{url_for('home')  }}">Reset </a> -->
+			
 			</center>
 			
-            
+        <a href="{{ url_for('about')}}"> About </a>    
         </form>
+		
         </center>
+		
     </div>
-
+	
+	
 
     <div class= "content">
  
@@ -48,7 +44,7 @@
         <!--
         <button class="button button1">Download result</button>  
        -->
-		<h3> Similar Anime like {{query_anime[0]}}</h3><br>
+		<h3> Similar Anime like "{{query_anime[0]}}"</h3><br>
 		 
 		<table border="1">
 			<tr>
@@ -192,9 +188,33 @@
 		</table>
        
     {% elif flag == 1 %}
-        {% for table in tables %}
+        <!--{% for table in tables %}
                     {{ table|safe }}
-        {% endfor %} 
+        {% endfor %}  -->
+		<center>
+		<h3> No match for "{{query_anime}}". Please try the following </h3>
+		<table broder="1">
+			<tr>
+				<td>{{tables[0][0]}} </td>
+			</tr>
+			
+			<tr>
+				<td>{{tables[1][0]}} </td>
+			</tr>
+			
+			<tr>
+				<td>{{tables[2][0]}} </td>
+			</tr>
+			
+			<tr>
+				<td>{{tables[3][0]}} </td>
+			</tr>
+			
+			<tr>
+				<td>{{tables[4][0]}} </td>
+			</tr>
+		
+		</table>
 		
 
 
@@ -208,18 +228,7 @@
 
 
 
-<script>
-    $(document).ready(function () {
-        $('#my_id').DataTable({
-        buttons: [
-           'copy', 'csv'
-        ]
-    } );
-    });
-   
 
-
-</script>
 
 
 
