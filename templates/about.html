@@ -1,0 +1,68 @@
+
+<html>
+<head>
+<title> Anime Recommendation App </title>
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+
+<body bgcolor="#473936">
+<div  class="grid">
+    <div style="background-image: url(../static/anime_wall_2.jpg); height: 150px; width: 100%; border: 1px solid black;" class= "title">
+		
+        <h1><center><font size="15" color="#543A35"> Anime Recommendation </font></center></h1>
+		<center><b><font size="4" color="#543A35"> Created by: Sumit Srivastava</font></b></center>
+		
+    </div>
+   
+    <div class= "navigation">
+	<center>
+	<a href="{{ url_for('home')}}"> Return to HomePage </a> 
+	</center>
+		<p>
+		<h4>
+		Are you sick & tired of getting anime suggestions like "Boku No Pico" everytime you ask your friends?<br>
+		Worry not! Introducing a simple Anime Recommendation System.
+		</p>
+		<br>
+		<p>
+		<h3>How does it work?</h3>
+		<h4>
+		Just type in the name of the anime you want to get similar anime recommendations of.
+		It will give you top 10 similar anime on the basis of its genre, studio, type & score.
+		<h5><i><u>Please note:</u> The anime title that you search for is case/punctuation sensitive, so if your query doesn't give you any result, the app will give you some suggestions based on similar titles.
+		Still, if you don't find your anime in the result try searching for it's alternative name from internet.</i></h5>
+		</p>
+		<br>
+		<h3>Algorithms behind the scene</h3>
+		<h4>
+		<ul> 
+			<li>Cosine Similarity</li> 
+			<li>Levenshtein Distance</li> 
+ 
+		</ul>
+		
+		</p>
+		
+		<br>
+		
+		<p>
+		<h5>Author's Note:
+			This was a small project created just for fun and is still in the Beta phase. I may try to add some other interesting features in future.
+			Any suggestions on how to improve this web-app is greatly appreciated.
+			
+			<br><br>
+			Drop in your feedback/suggestions at <i><u>sumvast@gmail.com </u></i>
+		</h5>
+		</p>
+	
+	</div>
+
+
+
+</body>
+
+</html>
+
